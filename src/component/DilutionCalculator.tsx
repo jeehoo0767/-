@@ -9,7 +9,9 @@ const DilutionCalculator = () => {
   const calculateSolution = () => {
     const ratioNum = parseFloat(ratio);
     const waterNum = parseFloat(waterAmount);
-    return Math.round((waterNum / (ratioNum + 1)) / 10) * 10;
+    if (isNaN(ratioNum) || isNaN(waterNum)) return 0;
+    if (ratioNum < 1) return 0;
+    return waterNum / ratioNum
   };
 
   return (
@@ -41,7 +43,6 @@ const DilutionCalculator = () => {
                   className="border rounded px-2 py-1 w-24"
                   min="1"
                 />
-                <span>: 1</span>
               </div>
 
               <div className="flex items-center space-x-2">
@@ -63,7 +64,6 @@ const DilutionCalculator = () => {
               </div>
 
               <div className="mt-4 text-sm text-gray-600">
-                <p>* 계산식: 물의 양 ÷ (희석비 + 1)</p>
                 <p>* 결과값은 10ml 단위로 반올림됩니다.</p>
               </div>
             </div>
