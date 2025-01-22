@@ -10,7 +10,7 @@ const DilutionCalculator = () => {
     const ratioNum = parseFloat(ratio);
     const waterNum = parseFloat(waterAmount);
     if (isNaN(ratioNum) || isNaN(waterNum)) return 0;
-    if (ratioNum < 1) return 0;
+    if (ratioNum < 1 || waterNum < 0) return 0;
     return waterNum / ratioNum
   };
 
